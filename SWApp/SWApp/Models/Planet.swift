@@ -23,6 +23,14 @@ class Planet: CustomStringConvertible, SearhableItem, Codable, Equatable {
         self.population = json["population"].string
     }
     
+    init(name: String?,
+         diameter: String?,
+         population: String?) {
+        self.name = name
+        self.diameter = diameter
+        self.population = population
+    }
+    
     static func == (lhs: Planet, rhs: Planet) -> Bool {
         lhs.name == rhs.name
     }

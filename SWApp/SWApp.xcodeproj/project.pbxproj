@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62620622A83887500EB072D /* SWAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62620612A83887500EB072D /* SWAppTests.swift */; };
+		D626206C2A83977E00EB072D /* NetworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626206B2A83977E00EB072D /* NetworkServiceTest.swift */; };
+		D626206E2A839A9100EB072D /* StorageServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D626206D2A839A9100EB072D /* StorageServiceTest.swift */; };
 		D66348442A81068300566FD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66348432A81068300566FD9 /* AppDelegate.swift */; };
 		D66348462A81068300566FD9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66348452A81068300566FD9 /* SceneDelegate.swift */; };
 		D66348482A81068300566FD9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66348472A81068300566FD9 /* MainViewController.swift */; };
@@ -42,7 +45,21 @@
 		D6946B492A83422200239ADA /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6946B482A83422200239ADA /* String + Extension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D62620632A83887500EB072D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D66348382A81068300566FD9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D663483F2A81068300566FD9;
+			remoteInfo = SWApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		D626205F2A83887500EB072D /* SWAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D62620612A83887500EB072D /* SWAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAppTests.swift; sourceTree = "<group>"; };
+		D626206B2A83977E00EB072D /* NetworkServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTest.swift; sourceTree = "<group>"; };
+		D626206D2A839A9100EB072D /* StorageServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTest.swift; sourceTree = "<group>"; };
 		D66348402A81068300566FD9 /* SWApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D66348432A81068300566FD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D66348452A81068300566FD9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,13 +94,16 @@
 		D6946B3F2A82AE7600239ADA /* FavoriteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBuilder.swift; sourceTree = "<group>"; };
 		D6946B422A82B1FB00239ADA /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		D6946B482A83422200239ADA /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
-		D6946B502A83513300239ADA /* SWAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAppTests.swift; sourceTree = "<group>"; };
-		D6946B572A8351F500239ADA /* MainPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTest.swift; sourceTree = "<group>"; };
-		D6946B5B2A8352C500239ADA /* MockServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServices.swift; sourceTree = "<group>"; };
-		D6946B5E2A83546800239ADA /* MockControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockControllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D626205C2A83887500EB072D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D663483D2A81068300566FD9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,11 +115,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D62620602A83887500EB072D /* SWAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				D626206B2A83977E00EB072D /* NetworkServiceTest.swift */,
+				D626206D2A839A9100EB072D /* StorageServiceTest.swift */,
+				D62620612A83887500EB072D /* SWAppTests.swift */,
+			);
+			path = SWAppTests;
+			sourceTree = "<group>";
+		};
 		D66348372A81068300566FD9 = {
 			isa = PBXGroup;
 			children = (
 				D66348422A81068300566FD9 /* SWApp */,
-				D6946B4F2A83513300239ADA /* SWAppTests */,
+				D62620602A83887500EB072D /* SWAppTests */,
 				D66348412A81068300566FD9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D66348402A81068300566FD9 /* SWApp.app */,
+				D626205F2A83887500EB072D /* SWAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,6 +152,7 @@
 				D66348612A811A8A00566FD9 /* Modules */,
 				D663485C2A810A8A00566FD9 /* Models */,
 				D66348432A81068300566FD9 /* AppDelegate.swift */,
+				D6946B422A82B1FB00239ADA /* Dependencies.swift */,
 				D66348452A81068300566FD9 /* SceneDelegate.swift */,
 				D663484C2A81068400566FD9 /* Assets.xcassets */,
 				D663484E2A81068400566FD9 /* LaunchScreen.storyboard */,
@@ -227,7 +259,6 @@
 			children = (
 				D6946B212A82652900239ADA /* Storage */,
 				D66348572A81097200566FD9 /* Network */,
-				D6946B422A82B1FB00239ADA /* Dependencies.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -240,28 +271,27 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D6946B4F2A83513300239ADA /* SWAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				D6946B5A2A8352B400239ADA /* Mocks */,
-				D6946B502A83513300239ADA /* SWAppTests.swift */,
-				D6946B572A8351F500239ADA /* MainPresenterTest.swift */,
-			);
-			path = SWAppTests;
-			sourceTree = "<group>";
-		};
-		D6946B5A2A8352B400239ADA /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				D6946B5B2A8352C500239ADA /* MockServices.swift */,
-				D6946B5E2A83546800239ADA /* MockControllers.swift */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D626205E2A83887500EB072D /* SWAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D62620652A83887500EB072D /* Build configuration list for PBXNativeTarget "SWAppTests" */;
+			buildPhases = (
+				D626205B2A83887500EB072D /* Sources */,
+				D626205C2A83887500EB072D /* Frameworks */,
+				D626205D2A83887500EB072D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D62620642A83887500EB072D /* PBXTargetDependency */,
+			);
+			name = SWAppTests;
+			productName = SWAppTests;
+			productReference = D626205F2A83887500EB072D /* SWAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D663483F2A81068300566FD9 /* SWApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D66348542A81068400566FD9 /* Build configuration list for PBXNativeTarget "SWApp" */;
@@ -292,6 +322,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					D626205E2A83887500EB072D = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = D663483F2A81068300566FD9;
+					};
 					D663483F2A81068300566FD9 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -314,11 +348,19 @@
 			projectRoot = "";
 			targets = (
 				D663483F2A81068300566FD9 /* SWApp */,
+				D626205E2A83887500EB072D /* SWAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D626205D2A83887500EB072D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D663483E2A81068300566FD9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,6 +376,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D626205B2A83887500EB072D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D626206C2A83977E00EB072D /* NetworkServiceTest.swift in Sources */,
+				D62620622A83887500EB072D /* SWAppTests.swift in Sources */,
+				D626206E2A839A9100EB072D /* StorageServiceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D663483C2A81068300566FD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -370,6 +422,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D62620642A83887500EB072D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D663483F2A81068300566FD9 /* SWApp */;
+			targetProxy = D62620632A83887500EB072D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		D66348492A81068300566FD9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -390,6 +450,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D62620662A83887500EB072D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TF56ZZML3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "OL-Corporation.SWAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SWApp";
+			};
+			name = Debug;
+		};
+		D62620672A83887500EB072D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TF56ZZML3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "OL-Corporation.SWAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SWApp";
+			};
+			name = Release;
+		};
 		D66348522A81068400566FD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -571,6 +667,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D62620652A83887500EB072D /* Build configuration list for PBXNativeTarget "SWAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D62620662A83887500EB072D /* Debug */,
+				D62620672A83887500EB072D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D663483B2A81068300566FD9 /* Build configuration list for PBXProject "SWApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -31,13 +31,15 @@ class NetworkService: NetworkHelper {
     private let baseUrl = "https://swapi.dev/api/"
     private var searchOperation: CancellableOperation?
     
-    func search(query: String, completion: @escaping (Bool, [Person], [Starship], [Planet]) -> Void) {
+    func search(query: String, completion: @escaping (Bool, [SearhableItem]) -> Void) {
+        let request = query.lowercased().replacingOccurrences(of: " ", with: "+")
         guard
-            let searchPeopleUrl = URL(string: Endpoint.people.searchUrl + query),
-            let searchStarshipsUrl = URL(string: Endpoint.starships.searchUrl + query),
-            let searchPlanetUrl = URL(string: Endpoint.planets.searchUrl + query)
+            let searchPeopleUrl = URL(string: Endpoint.people.searchUrl + request),
+            let searchStarshipsUrl = URL(string: Endpoint.starships.searchUrl + request),
+            let searchPlanetUrl = URL(string: Endpoint.planets.searchUrl + request)
         else {
-            fatalError("Invalid URL for: search")
+            completion(false, [])
+            return
         }
         
         if searchOperation?.isExecuting ?? false {
@@ -79,9 +81,9 @@ class NetworkService: NetworkHelper {
         searchOperation = CancellableOperation(operations: [peopleBlock, starshipsBlock, planetsBlock],
                                                completion: {
             if errorsCount == 3 {
-                completion(false, [], [], [])
+                completion(false, [])
             } else {
-                completion(true, people, starships, planets)
+                completion(true, people+starships+planets)
             }
         })
         searchOperation?.start()
