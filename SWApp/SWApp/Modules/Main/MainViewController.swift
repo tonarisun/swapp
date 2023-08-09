@@ -10,86 +10,128 @@
 import UIKit
 
 protocol MainController {
-    func show(data: MainModel)
+    func show(items: [SearchItemModel], errorOccured: Bool)
+    func showLoader(_ show: Bool)
 }
 
 class MainViewController: UIViewController, MainController {
     // MARK: -  UI
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .minimal
+        searchBar.tintColor = .yellow
+        searchBar.searchTextField.textColor = .white
+        searchBar.keyboardAppearance = .dark
+        searchBar.placeholder = "Search..."
         return searchBar
     }()
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(SearchItemTableViewCell.self, forCellReuseIdentifier: SearchItemTableViewCell.identifier)
-        table.rowHeight = 150
         table.separatorStyle = .none
+        table.rowHeight = 200
         return table
+    }()
+    private let loader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView(style: .large)
+        loader.hidesWhenStopped = true
+        loader.color = .yellow
+        return loader
+    }()
+    private let emptyView: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = .yellow
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
     }()
     
     // MARK: - Properties
     private var models = [SearchItemModel]()
-    private var presenter: MainPresenter?
+    var presenter: MainPresenter?
+    private var errorOccured = false
+    private let emptyListText = "A long time ago \nin a galaxy far, far away....\nnothing was found.\nUse search bar to find\nwhat you are looking for,\nyoung jedi"
+    private let errorText = "Ooops...something went wrong.\nDon't give up, try again later"
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.presenter = MainPresenterImpl(viewController: self)
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter?.onViewWillAppear()
+    }
+    
     private func setupUI() {
+        view.backgroundColor = .black
+        
         searchBar.delegate = self
         view.addSubview(searchBar)
-        searchBar.setConstraints([.topToTop(10), .centerX(), .leftToLeft(10), .rightToRight(-10)], to: view)
-//        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-//        searchBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        searchBar.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1, constant: -20).isActive = true
-        
-        tableView.delegate = self
+        searchBar.setConstraints([.topToTop(10), .centerX(), .leftToLeft(10), .rightToRight(-10), .height(40)], to: view)
+
         tableView.dataSource = self
         view.addSubview(tableView)
         tableView.setConstraints([.topToBottom(20)], to: searchBar)
         tableView.setConstraints([.leftToLeft(), .rightToRight(), .bottomToBottom()], to: view)
-//        tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-//        tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        tableView.backgroundColor = .clear
+        
+        view.addSubview(loader)
+        loader.backgroundColor = .black
+        loader.setConstraints([.centerX(), .centerY()], to: view)
+        
+        view.addSubview(emptyView)
+        emptyView.setConstraints([.topToTop(), .leftToLeft(), .rightToRight(), .bottomToBottom()], to: tableView)
+        emptyView.setSpacedText(emptyListText,
+                                color: .yellow,
+                                alignment: .center)
     }
     
     // MARK: - Protocol methods
-    func show(data: MainModel) {
-        models.removeAll()
-        data.people.forEach { person in
-            models.append(SearchItemModel(type: .person, description: person.description, isFavorite: false))
+    func show(items: [SearchItemModel], errorOccured: Bool) {
+        if errorOccured {
+            emptyView.setSpacedText(errorText,
+                                    color: .yellow,
+                                    alignment: .center)
+        } else {
+            emptyView.setSpacedText(emptyListText,
+                                    color: .yellow,
+                                    alignment: .center)
         }
-        data.starships.forEach { starship in
-            models.append(SearchItemModel(type: .starship, description: starship.description, isFavorite: false))
-        }
-        data.planets.forEach { planet in
-            models.append(SearchItemModel(type: .planet, description: planet.description, isFavorite: false))
-        }
+        models = items
         tableView.reloadData()
+    }
+    
+    func showLoader(_ show: Bool) {
+        if show {
+            loader.startAnimating()
+        } else {
+            loader.stopAnimating()
+        }
     }
 }
 
+// MARK: - UISearchBarDelegate
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.onChangeQuery(searchText)
     }
 }
 
-extension MainViewController: UITableViewDelegate {
-    
-}
-
+// MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        models.count
+        emptyView.isHidden = !models.isEmpty
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

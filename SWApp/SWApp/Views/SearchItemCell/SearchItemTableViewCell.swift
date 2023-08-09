@@ -11,11 +11,16 @@ import UIKit
 
 class SearchItemTableViewCell: UITableViewCell {
     static var identifier = "SearchItemTableViewCell"
-    var model: SearchItemModel?
+    private var favButtonHandler: (() -> Void)?
+    private var model: SearchItemModel?
+    
     // MARK: - UI
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
     private let favButton: UIButton = {
@@ -26,18 +31,29 @@ class SearchItemTableViewCell: UITableViewCell {
     // MARK: - Construct
     func construct(withModel model: SearchItemModel) {
         self.model = model
-        descriptionLabel.text = model.description
+        descriptionLabel.setSpacedText(model.description)
+        favButtonHandler = model.favButtonHandler
+        favButton.setImage(UIImage(systemName: model.isFavorite ? "heart.fill" : "heart"), for: .normal)
     }
 
+    // MARK: - Life cycle
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         selectionStyle = .none
+        backgroundColor = .clear
         contentView.addSubview(descriptionLabel)
         descriptionLabel.setConstraints([.topToTop(10), .bottomToBottom(-10), .leftToLeft(10), .rightToRight(-50)], to: contentView)
         
         contentView.addSubview(favButton)
         favButton.setConstraints([.centerY(), .rightToRight(-10), .width(30), .height(30)], to: contentView)
         favButton.tintColor = .red
-        favButton.setImage(UIImage(systemName: model!.isFavorite ? "heart.fill" : "heart"), for: .normal)
+        favButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func buttonTapped() {
+        guard let model = self.model else { return }
+        model.isFavorite = !model.isFavorite
+        favButton.setImage(UIImage(systemName: model.isFavorite ? "heart.fill" : "heart"), for: .normal)
+        favButtonHandler?()
     }
 }

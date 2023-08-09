@@ -3,4 +3,102 @@
    uuid = "9E336007-E985-4357-94A6-3AAF2E81604A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4B4C800-5E7A-4E59-B652-19E2CCAB916E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SWApp/Services/Network/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "search(query:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E4B4C800-5E7A-4E59-B652-19E2CCAB916E - 205ef3deaf57290e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 () -&gt; () in SWApp.NetworkService.search(query: Swift.String, completion: (Swift.Bool, Swift.Array&lt;SWApp.Person&gt;, Swift.Array&lt;SWApp.Starship&gt;, Swift.Array&lt;SWApp.Planet&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SWApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olgalidman/Projects/swapp/SWApp/SWApp/Services/Network/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1416">
+               </Location>
+               <Location
+                  uuid = "E4B4C800-5E7A-4E59-B652-19E2CCAB916E - 205ef3deaf57290e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 () -&gt; () in SWApp.NetworkService.search(query: Swift.String, completion: (Swift.Bool, Swift.Array&lt;SWApp.Person&gt;, Swift.Array&lt;SWApp.Starship&gt;, Swift.Array&lt;SWApp.Planet&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SWApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olgalidman/Projects/swapp/SWApp/SWApp/Services/Network/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1540">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC6073A1-3E55-42C0-A612-258E40DC38A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SWApp/Services/Network/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "search(query:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EC6073A1-3E55-42C0-A612-258E40DC38A3 - 205ef3deaf572836"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #3 () -&gt; () in SWApp.NetworkService.search(query: Swift.String, completion: (Swift.Bool, Swift.Array&lt;SWApp.Person&gt;, Swift.Array&lt;SWApp.Starship&gt;, Swift.Array&lt;SWApp.Planet&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SWApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olgalidman/Projects/swapp/SWApp/SWApp/Services/Network/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "468">
+               </Location>
+               <Location
+                  uuid = "EC6073A1-3E55-42C0-A612-258E40DC38A3 - 205ef3deaf572836"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #3 () -&gt; () in SWApp.NetworkService.search(query: Swift.String, completion: (Swift.Bool, Swift.Array&lt;SWApp.Person&gt;, Swift.Array&lt;SWApp.Starship&gt;, Swift.Array&lt;SWApp.Planet&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SWApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olgalidman/Projects/swapp/SWApp/SWApp/Services/Network/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "780">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

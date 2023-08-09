@@ -10,6 +10,11 @@
 import Foundation
 import SwiftyJSON
 
+enum NetworkServiceError: Error {
+    case loadDataError
+    case parseDataError
+}
+
 class NetworkService: NetworkHelper {
     
     enum Endpoint: String {
@@ -31,7 +36,7 @@ class NetworkService: NetworkHelper {
     private let baseUrl = "https://swapi.dev/api/"
     private var searchOperation: CancellableOperation?
     
-    func search(query: String, completion: @escaping ([Person], [Starship], [Planet]) -> Void) {
+    func search(query: String, completion: @escaping (Bool, [Person], [Starship], [Planet]) -> Void) {
         guard
             let searchPeopleUrl = URL(string: Endpoint.people.searchUrl + query),
             let searchStarshipsUrl = URL(string: Endpoint.starships.searchUrl + query),
@@ -47,8 +52,15 @@ class NetworkService: NetworkHelper {
         var people = [Person]()
         var starships = [Starship]()
         var planets = [Planet]()
+        var errorsCount = 0
         
         let peopleBlock = BlockOperation {
+            do {
+                let data = try Data(contentsOf: searchPeopleUrl)
+            }
+            catch {
+                
+            }
             if let data = try? Data(contentsOf: searchPeopleUrl),
                let json = try? JSON(data: data),
                let results = json["results"].array,
@@ -74,7 +86,11 @@ class NetworkService: NetworkHelper {
         }
         searchOperation = CancellableOperation(operations: [peopleBlock, starshipsBlock, planetsBlock],
                                                completion: {
-            completion(people, starships, planets)
+            if errorsCount == 3 {
+                completion(false, [], [], [])
+            } else {
+                completion(true, people, starships, planets)
+            }
         })
         searchOperation?.start()
     }

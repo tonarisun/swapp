@@ -10,5 +10,5 @@
 import Foundation
 
 protocol NetworkHelper {
-    func search(query: String, completion: @escaping ([Person], [Starship], [Planet]) -> Void)
+    func search(query: String, completion: @escaping (Bool, [Person], [Starship], [Planet]) -> Void)
 }
