@@ -14,6 +14,7 @@ class Starship: CustomStringConvertible, SearhableItem, Codable, Equatable {
     let model: String?
     let manufacturer: String?
     let passengers: String?
+    let url: String?
     var description: String {
         return "STARSHIP\nNAME: \(name ?? "unknown")\nMODEL: \(model ?? "unknown")\nMANUFACTURER: \(manufacturer ?? "unknown")\nPASSENGERS: \(passengers ?? "unknown")"
     }
@@ -23,6 +24,7 @@ class Starship: CustomStringConvertible, SearhableItem, Codable, Equatable {
         self.model = json["model"].string
         self.manufacturer = json["manufacturer"].string
         self.passengers = json["passengers"].string
+        self.url = json["url"].string
     }
     
     static func == (lhs: Starship, rhs: Starship) -> Bool {

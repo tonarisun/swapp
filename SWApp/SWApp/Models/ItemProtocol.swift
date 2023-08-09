@@ -12,4 +12,5 @@ import Foundation
 protocol SearhableItem {
     var name: String? { get }
     var description: String { get }
+    var url: String? { get }
 }

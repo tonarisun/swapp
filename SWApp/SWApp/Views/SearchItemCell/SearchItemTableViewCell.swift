@@ -19,7 +19,7 @@ class SearchItemTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .light)
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()

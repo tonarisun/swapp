@@ -49,7 +49,8 @@ class MainPresenterImpl: MainPresenter {
                 self.items = items
                 var showingItems: [SearchItemModel] = []
                 for item in self.items {
-                    showingItems.append(SearchItemModel(description: item.description,
+                    showingItems.append(SearchItemModel(identifier: item.name ?? "",
+                                                        description: item.description,
                                                         isFavorite: self.storageService.contains(item: item),
                                                         favButtonHandler: { self.onTapFavButton(item: item) }))
                 }
@@ -62,7 +63,8 @@ class MainPresenterImpl: MainPresenter {
     func onViewWillAppear() {
         var showingItems: [SearchItemModel] = []
         for item in items {
-            showingItems.append(SearchItemModel(description: item.description,
+            showingItems.append(SearchItemModel(identifier: item.name ?? "",
+                                                description: item.description,
                                                 isFavorite: self.storageService.contains(item: item),
                                                 favButtonHandler: {
                 self.onTapFavButton(item: item)

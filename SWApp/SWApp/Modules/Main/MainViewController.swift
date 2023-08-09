@@ -82,7 +82,6 @@ class MainViewController: UIViewController, MainController {
         tableView.backgroundColor = .clear
         
         view.addSubview(loader)
-        loader.backgroundColor = .black
         loader.setConstraints([.centerX(), .centerY()], to: view)
         
         view.addSubview(emptyView)

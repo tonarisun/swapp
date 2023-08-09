@@ -11,4 +11,5 @@ import Foundation
 
 protocol NetworkHelper {
     func search(query: String, completion: @escaping (Bool, [SearhableItem]) -> Void)
+    func getInfo(for item: SearhableItem, completion: @escaping (Bool, [Film]) -> Void)
 }

@@ -13,6 +13,7 @@ class Person: CustomStringConvertible, SearhableItem, Codable, Equatable {
     let name: String?
     let gender: String?
     let starships: [String]
+    let url: String?
     var description: String {
         return "PERSON\nNAME: \(name ?? "unknown")\nGENDER: \(gender ?? "unknown")\nCOUNT OF STARSHIPS: \(starships.count)"
     }
@@ -21,6 +22,7 @@ class Person: CustomStringConvertible, SearhableItem, Codable, Equatable {
         self.name = json["name"].string
         self.gender = json["gender"].string
         self.starships = (json["starships"].arrayObject as? [String]) ?? []
+        self.url = json["url"].string
     }
     
     static func == (lhs: Person, rhs: Person) -> Bool {

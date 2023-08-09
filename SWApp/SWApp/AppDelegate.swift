@@ -12,10 +12,20 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static let dependencyContainer = DependenciesContainer()
-    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setupToolbarAppearance()
         return true
+    }
+    
+    private func setupToolbarAppearance() {
+        UITabBar.appearance().tintColor = .yellow
+        UITabBar.appearance().unselectedItemTintColor = .lightGray
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().barTintColor = .black
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = .black
+        UINavigationBar.appearance().tintColor = .yellow
     }
 
     // MARK: UISceneSession Lifecycle

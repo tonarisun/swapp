@@ -13,6 +13,7 @@ class Planet: CustomStringConvertible, SearhableItem, Codable, Equatable {
     let name: String?
     let diameter: String?
     let population: String?
+    let url: String?
     var description: String {
         return "PLANET\nNAME: \(name ?? "unknown")\nDIAMETER: \(diameter ?? "unknown") km\nPOPULATION: \(population ?? "unknown")"
     }
@@ -21,14 +22,17 @@ class Planet: CustomStringConvertible, SearhableItem, Codable, Equatable {
         self.name = json["name"].string
         self.diameter = json["diameter"].string
         self.population = json["population"].string
+        self.url = json["url"].string
     }
     
     init(name: String?,
          diameter: String?,
-         population: String?) {
+         population: String?,
+         url: String?) {
         self.name = name
         self.diameter = diameter
         self.population = population
+        self.url = url
     }
     
     static func == (lhs: Planet, rhs: Planet) -> Bool {

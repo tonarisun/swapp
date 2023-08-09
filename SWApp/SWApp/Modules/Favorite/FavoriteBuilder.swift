@@ -16,11 +16,17 @@ class FavoriteBuilder {
         self.dependencies = dependencies
     }
     
-    func build() -> FavoriteViewController? {
+    func build() -> UINavigationController? {
         let storyboard = UIStoryboard(name: "Favorite", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? FavoriteViewController
-        let presenter = FavoritePresenterImpl(viewController: controller, storageHelper: dependencies.storageHelper)
+        let navController = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController") as? UINavigationController
+        let controller = navController?.viewControllers.first as? FavoriteViewController
+        let detailsBuilder = DetailsBuilder(dependencies: dependencies)
+        let router = FavoriteRouterImpl(viewController: controller,
+                                        detailsBuilder: detailsBuilder)
+        let presenter = FavoritePresenterImpl(viewController: controller,
+                                              router: router,
+                                              storageHelper: dependencies.storageHelper)
         controller?.presenter = presenter
-        return controller
+        return navController
     }
 }

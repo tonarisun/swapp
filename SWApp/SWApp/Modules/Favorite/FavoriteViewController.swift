@@ -50,7 +50,6 @@ class FavoriteViewController: UIViewController, FavoriteController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = FavoritePresenterImpl(viewController: self, storageHelper: StorageService())
         setupUI()
     }
     
@@ -62,14 +61,12 @@ class FavoriteViewController: UIViewController, FavoriteController {
     
     private func setupUI() {
         view.backgroundColor = .black
-        
-        view.addSubview(titleLabel)
-        titleLabel.setConstraints([.topToTop(), .leftToLeft(), .rightToRight(), .height(40)], to: view)
+        navigationItem.titleView = titleLabel
         
         tableView.dataSource = self
+        tableView.delegate = self
         view.addSubview(tableView)
-        tableView.setConstraints([.topToBottom(10)], to: titleLabel)
-        tableView.setConstraints([.leftToLeft(), .rightToRight(), .bottomToBottom()], to: view)
+        tableView.setConstraints([.topToTop(), .leftToLeft(), .rightToRight(), .bottomToBottom()], to: view)
         tableView.backgroundColor = .clear
         
         view.addSubview(emptyView)
@@ -80,6 +77,13 @@ class FavoriteViewController: UIViewController, FavoriteController {
     func show(items: [SearchItemModel]) {
         models = items
         tableView.reloadData()
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension FavoriteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectItem(named: models[indexPath.row].identifier)
     }
 }
 
