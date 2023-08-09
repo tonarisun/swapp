@@ -10,11 +10,6 @@
 import Foundation
 import SwiftyJSON
 
-enum NetworkServiceError: Error {
-    case loadDataError
-    case parseDataError
-}
-
 class NetworkService: NetworkHelper {
     
     enum Endpoint: String {
@@ -55,33 +50,30 @@ class NetworkService: NetworkHelper {
         var errorsCount = 0
         
         let peopleBlock = BlockOperation {
-            do {
-                let data = try Data(contentsOf: searchPeopleUrl)
-            }
-            catch {
-                
-            }
             if let data = try? Data(contentsOf: searchPeopleUrl),
                let json = try? JSON(data: data),
-               let results = json["results"].array,
-               !results.isEmpty {
+               let results = json["results"].array {
                 people = results.map({ Person(json: $0) })
+            } else {
+                errorsCount += 1
             }
         }
         let starshipsBlock = BlockOperation {
             if let data = try? Data(contentsOf: searchStarshipsUrl),
                let json = try? JSON(data: data),
-               let results = json["results"].array,
-               !results.isEmpty {
+               let results = json["results"].array {
                 starships = results.map({ Starship(json: $0) })
+            } else {
+                errorsCount += 1
             }
         }
         let planetsBlock = BlockOperation {
             if let data = try? Data(contentsOf: searchPlanetUrl),
                let json = try? JSON(data: data),
-               let results = json["results"].array,
-               !results.isEmpty {
+               let results = json["results"].array {
                 planets = results.map({ Planet(json: $0) })
+            } else {
+                errorsCount += 1
             }
         }
         searchOperation = CancellableOperation(operations: [peopleBlock, starshipsBlock, planetsBlock],

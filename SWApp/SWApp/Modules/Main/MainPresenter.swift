@@ -46,15 +46,16 @@ class MainPresenterImpl: MainPresenter {
             guard let self = self else { return }
             if !success {
                 self.viewController?.show(items: [], errorOccured: true)
+            } else {
+                self.items = (people + starships + planets)
+                var showingItems: [SearchItemModel] = []
+                for item in self.items {
+                    showingItems.append(SearchItemModel(description: item.description,
+                                                        isFavorite: self.storageService.contains(item: item),
+                                                        favButtonHandler: { self.onTapFavButton(item: item) }))
+                }
+                self.viewController?.show(items: showingItems, errorOccured: false)
             }
-            self.items = (people + starships + planets)
-            var showingItems: [SearchItemModel] = []
-            for item in self.items {
-                showingItems.append(SearchItemModel(description: item.description,
-                                                    isFavorite: self.storageService.contains(item: item),
-                                                    favButtonHandler: { self.onTapFavButton(item: item) }))
-            }
-            self.viewController?.show(items: showingItems, errorOccured: false)
             self.viewController?.showLoader(false)
         }
     }

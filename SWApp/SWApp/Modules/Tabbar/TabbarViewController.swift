@@ -17,7 +17,12 @@ class TabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.tintColor = .yellow
+        setupUI()
         presenter?.onViewDidLoad()
+    }
+    
+    private func setupUI() {
+        tabBar.tintColor = .yellow
+        tabBar.unselectedItemTintColor = .lightGray
     }
 }
