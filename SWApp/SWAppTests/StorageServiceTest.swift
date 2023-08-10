@@ -12,10 +12,11 @@ import XCTest
 
 final class StorageServiceTest: XCTestCase {
     var sut: StorageService!
-    let mockItem = Planet(name: "planet", diameter: "100", population: "1", url: "planet.com")
+    var mockItem: Planet!
     
     override func setUpWithError() throws {
        sut = StorageService()
+        mockItem = Planet(name: "planet", diameter: "100", population: "1", url: "planet.com")
     }
 
     override func tearDownWithError() throws {
@@ -23,6 +24,7 @@ final class StorageServiceTest: XCTestCase {
             sut.handle(item: mockItem)
         }
         sut = nil
+        mockItem = nil
         try super.tearDownWithError()
     }
 

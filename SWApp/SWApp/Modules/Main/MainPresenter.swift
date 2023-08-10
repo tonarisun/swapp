@@ -10,7 +10,7 @@
 import Foundation
 
 protocol MainPresenter {
-    func onChangeQuery(_ query: String?)
+    @discardableResult func onChangeQuery(_ query: String?) -> Bool
     func onViewWillAppear()
 }
 
@@ -32,13 +32,14 @@ class MainPresenterImpl: MainPresenter {
     }
     
     // MARK: - Protocol methods
-    func onChangeQuery(_ query: String?) {
+    @discardableResult
+    func onChangeQuery(_ query: String?) -> Bool {
         guard let query = query,
               query.isLatinLetters,
               query.count >= 2
         else {
             viewController?.show(items: [], errorOccured: false)
-            return
+            return false
         }
         viewController?.showLoader(true)
         networkService.search(query: query) { [weak self] success, items in
@@ -58,6 +59,7 @@ class MainPresenterImpl: MainPresenter {
             }
             self.viewController?.showLoader(false)
         }
+        return true
     }
     
     func onViewWillAppear() {
