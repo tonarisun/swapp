@@ -23,6 +23,7 @@ class MainViewController: UIViewController, MainController {
         searchBar.searchTextField.textColor = .white
         searchBar.keyboardAppearance = .dark
         searchBar.placeholder = "Search..."
+        searchBar.keyboardType = .alphabet
         return searchBar
     }()
     private let tableView: UITableView = {
@@ -30,6 +31,7 @@ class MainViewController: UIViewController, MainController {
         table.register(SearchItemTableViewCell.self, forCellReuseIdentifier: SearchItemTableViewCell.identifier)
         table.separatorStyle = .none
         table.rowHeight = 200
+        table.keyboardDismissMode = .onDrag
         return table
     }()
     private let loader: UIActivityIndicatorView = {
