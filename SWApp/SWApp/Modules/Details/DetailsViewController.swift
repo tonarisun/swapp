@@ -34,6 +34,7 @@ class DetailsViewController: UIViewController, DetailsController {
     var presenter: DetailsPresenter?
     var itemTitle: String?
     var models = [FilmInfoModel]()
+    private let errorText = "Error occured... don't give up and try again later"
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -63,7 +64,7 @@ class DetailsViewController: UIViewController, DetailsController {
     func show(films: [Film]) {
         models = films.map({ FilmInfoModel(info: $0.description) })
         if films.isEmpty {
-            models = [FilmInfoModel(info: "Error occured... don't give up and try again later")]
+            models = [FilmInfoModel(info: errorText)]
         }
         tableView.reloadData()
     }

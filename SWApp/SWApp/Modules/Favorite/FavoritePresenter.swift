@@ -34,13 +34,14 @@ class FavoritePresenterImpl: FavoritePresenter {
     // MARK: - Protocol methods
     func getItems() {
         items = storageService.getAll()
-        let showingItems = items.map { item in
-            return SearchItemModel(identifier: item.name ?? "",
-                                   description: item.description,
-                                   isFavorite: storageService.contains(item: item),
-                                   favButtonHandler: {
-                self.onTapFavButton(item: item)
-            })
+        var showingItems = [SearchItemModel]()
+        for item in items {
+            showingItems.append(SearchItemModel(identifier: item.name ?? "",
+                                                description: item.description,
+                                                isFavorite: storageService.contains(item: item),
+                                                favButtonHandler: { [unowned self] in
+                             self.onTapFavButton(item: item)
+                         }))
         }
         viewController?.show(items: showingItems)
     }

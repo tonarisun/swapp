@@ -11,7 +11,7 @@ import Foundation
 import SwiftyJSON
 
 class NetworkService: NetworkHelper {
-    
+    // MARK: - Endpoint enum
     enum Endpoint: String {
         case films =     "films/"
         case people =    "people/"
@@ -28,10 +28,11 @@ class NetworkService: NetworkHelper {
         }
     }
     
+    // MARK: - Properties
     private let baseUrl = "https://swapi.dev/api/"
     private var searchOperation: CancellableOperation?
-    private var concurrentQueue = DispatchQueue(label: "", attributes: .concurrent)
     
+    // MARK: - Search
     func search(query: String, completion: @escaping (Bool, [SearhableItem]) -> Void) {
         let request = query.lowercased().replacingOccurrences(of: " ", with: "+")
         guard
@@ -90,6 +91,7 @@ class NetworkService: NetworkHelper {
         searchOperation?.start()
     }
     
+    // MARK: - Get info
     func getInfo(for item: SearhableItem, completion: @escaping (Bool, [Film]) -> Void) {
         guard let urlString = item.url,
               let url = URL(string: urlString)
@@ -99,6 +101,7 @@ class NetworkService: NetworkHelper {
         }
         var films = [Film]()
         var errorOccured = false
+        let concurrentQueue = DispatchQueue(label: "get.info.concurrent.queue", attributes: .concurrent)
         concurrentQueue.async {
             guard let data = try? Data(contentsOf: url),
                   let json = try? JSON(data: data),
@@ -109,7 +112,7 @@ class NetworkService: NetworkHelper {
             let group = DispatchGroup()
             for url in filmUrls {
                 group.enter()
-                self.concurrentQueue.async {
+                concurrentQueue.async {
                     if let url = URL(string: url),
                        let data = try? Data(contentsOf: url),
                        let json = try? JSON(data: data) {

@@ -10,11 +10,13 @@
 import Foundation
 
 class StorageService: StorageHelper {
+    // MARK: - Properties
     private let defaults = UserDefaults.standard
     private let peopleKey = "kFavoritePeople"
     private let starshipsKey = "kFavoriteStarships"
     private let planetsKey = "kFavoritePlanets"
     
+    // MARK: - Protocol methods
     func getAll() -> [SearhableItem] {
         let people: [Person] = load(forKey: peopleKey)
         let starships: [Starship] = load(forKey: starshipsKey)
@@ -52,6 +54,7 @@ class StorageService: StorageHelper {
         return false
     }
     
+    // MARK: - Private methods
     private func handlePerson(_ person: Person) {
         var people: [Person] = load(forKey: peopleKey)
         if people.contains(person) {
@@ -81,15 +84,7 @@ class StorageService: StorageHelper {
         }
         save(planets, forKey: planetsKey)
     }
-    
-//    private func addNew<T: Codable>(_ type: T.Type, item: T, forKey key: String) {
-//        var currentValue: [T] = load(forKey: key)
-//        if !currentValue.contains(where: item) {
-//            currentValue.append(item)
-//            save(currentValue, forKey: key)
-//        }
-//    }
-    
+
     private func load<T: Codable>(forKey key: String) -> [T] {
         guard let encodedData = UserDefaults.standard.array(forKey: key) as? [Data] else {
             return []

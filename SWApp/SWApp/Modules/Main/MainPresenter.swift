@@ -61,12 +61,12 @@ class MainPresenterImpl: MainPresenter {
     }
     
     func onViewWillAppear() {
-        var showingItems: [SearchItemModel] = []
+        var showingItems = [SearchItemModel]()
         for item in items {
             showingItems.append(SearchItemModel(identifier: item.name ?? "",
                                                 description: item.description,
                                                 isFavorite: self.storageService.contains(item: item),
-                                                favButtonHandler: {
+                                                favButtonHandler: { [unowned self] in
                 self.onTapFavButton(item: item)
             }))
         }

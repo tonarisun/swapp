@@ -31,10 +31,8 @@ class DetailsPresenterImpl: DetailsPresenter {
     // MARK: - Protocol methods
     func onViewDidLoad() {
         viewController?.showLoader(true)
-        networkService.getInfo(for: item) { [weak self] success, films in
-            if success {
-                self?.viewController?.show(films: films.sorted(by: { ($0.episodeID ?? 0) < ($1.episodeID ?? 0) }))
-            }
+        networkService.getInfo(for: item) { [weak self] _, films in
+            self?.viewController?.show(films: films.sorted(by: { ($0.episodeID ?? 0) < ($1.episodeID ?? 0) }))
             self?.viewController?.showLoader(false)
         }
     }

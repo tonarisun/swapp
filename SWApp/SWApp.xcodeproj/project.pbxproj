@@ -211,11 +211,11 @@
 		D663485C2A810A8A00566FD9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D663485D2A810A9A00566FD9 /* Person.swift */,
-				D663485F2A810AA600566FD9 /* Starship.swift */,
-				D66348692A814D4E00566FD9 /* Planet.swift */,
 				D6946B3B2A827D5E00239ADA /* ItemProtocol.swift */,
 				D626207A2A83F05100EB072D /* Film.swift */,
+				D663485D2A810A9A00566FD9 /* Person.swift */,
+				D66348692A814D4E00566FD9 /* Planet.swift */,
+				D663485F2A810AA600566FD9 /* Starship.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
