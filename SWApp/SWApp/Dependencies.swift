@@ -9,7 +9,7 @@
 
 import Foundation
 
-struct DependenciesContainer {
+class DependenciesContainer {
     let networkHelper = NetworkService()
     let storageHelper = StorageService()
 }
